@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-image: url('https://images.unsplash.com/photo-1511918984140-1b0c1c1c1c1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&q=80&w=1080');
+            background-size: cover;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            margin-bottom: 20px;
+            font-size: 3em;
+            text-align: center;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ff69b4;
+            color: white;
+            transition: 0.3s;
+            margin: 10px;
+        }
+        .button:hover {
+            background-color: #ff1493;
+        }
+        .celebration {
+            display: none;
+            text-align: center;
+        }
+        .celebration img {
+            width: 300px;
+        }
+        .heart {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('https://cdn-icons-png.flaticon.com/512/833/833472.png');
+            background-size: cover;
+            animation: float 3s infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will you be my Valentine?</h1>
+    <button class="button" id="yesButton">Yes</button>
+    <button class="button" id="noButton">No</button>
+
+    <div class="celebration" id="celebration">
+        <h2>Yay! 🎉</h2>
+        <img src="https://media.giphy.com/media/3o7aD2sa1g0g0g0g0g/giphy.gif" alt="Celebration">
+    </div>
+
+    <script>
+        const noButton = document.getElementById('noButton');
+        const yesButton = document.getElementById('yesButton');
+        const celebration = document.getElementById('celebration');
+
+        noButton.addEventListener('mouseover', () => {
+            noButton.style.position = 'absolute';
+            noButton.style.top = Math.random() * (window.innerHeight - 50) + 'px'; // Random Y position
+            noButton.style.left = Math.random() * (window.innerWidth - 150) + 'px'; // Random X position
+        });
+
+        yesButton.addEventListener('click', () => {
+            celebration.style.display = 'block';
+            document.body.style.backgroundColor = '#90ee90'; // Change background color for celebration
+        });
+
+        // Create floating hearts
+        for (let i = 0; i < 10; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * window.innerWidth + 'px';
+            heart.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(heart);
+        }
+    </script>
+
+</body>
+</html>
